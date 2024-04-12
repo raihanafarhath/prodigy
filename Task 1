@@ -1,0 +1,8 @@
+import numpy as np
+import matplotlib.pyplot as plt
+ages = np.random.normal(loc=30, scale=10, size=1000)  
+plt.hist(ages, bins=30, color='skyblue', edgecolor='black')
+plt.xlabel('Age')
+plt.ylabel('Frequency')
+plt.title('Distribution of Ages in a Population')
+plt.show()
