@@ -1,0 +1,23 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+from nltk.sentiment.vader import SentimentIntensityAnalyzer
+social_media_data = [
+    "I love the new iPhone! It's amazing.",
+    "The customer service at XYZ company is terrible.",
+    "Excited to try out the new restaurant in town.",
+    "Disappointed with the latest software update.",
+    "Great experience with the customer support team!",
+]
+sid = SentimentIntensityAnalyzer()
+sentiment_scores = []
+for text in social_media_data:
+    scores = sid.polarity_scores(text)
+    sentiment_scores.append(scores)
+df_sentiment = pd.DataFrame(sentiment_scores)
+plt.figure(figsize=(8, 6))
+sns.histplot(df_sentiment['compound'], bins=20, kde=True, color='skyblue')
+plt.title('Distribution of Sentiment Scores')
+plt.xlabel('Compound Sentiment Score')
+plt.ylabel('Frequency')
+plt.show()
